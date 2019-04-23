@@ -23,6 +23,8 @@ a2ensite zebra-site
 apachectl reload
 mkdir /var/www/logs (or your configure directory)
 cd /var/www/logs
+htpasswd -c .htpasswd user
+chmod -R www-data.www-data /var/www/logs
 </code></pre></p>
 
 <h2>create log resources</h2>
@@ -65,6 +67,6 @@ chown -R www-data.www-data /var/www/logs/get_daemons
 <h2>Getting logs</h2>
 <p>In your browser type a url like this:</p>
 
-<code>https://logs.mysite.com/get_daemon</code>
+<code>https://logs.mysite.com/get_daemons</code>
 
 <p>If its the first time apache request your htpassword, next your log file will be reported</p>
