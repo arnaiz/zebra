@@ -28,8 +28,27 @@ cd /var/www/logs
 <h2>create log resources</h2>
 <p>because risk issues I recommend work with copys of logs than you can copy in a cron job. If you want read logs from /var/logs you must be sure that Apache user can read your desired logs and you can jump this step</p>
 
+<pre><code>sudo curl -o /usr/local/sbin/place_resource_log.pl https://raw.githubusercontent.com/arnaiz/zebra/master/place_resource_log.sh</code></pre>
 
-  
-  
+<p>For example resource could be "error" from /var/log/apach2/error.log, or "daemon" from /var/log/daemon.log
+Edit and rename your script to addapt the log you want copy.</p>
+
+<p>You must do a copy by resource, from the example it would be:</p>
+<pre><code>
+ls /usr/local/sbin/place*
+/usr/local/sbin/place_daemon_log.sh  /usr/local/sbin/place_error_log.sh
+</code></pre>
+
+<p>Next its create a cron job to run the script that will copy the log to your resource:</p>
+<pre><code>
+crontab -e
+00 * * * * /usr/local/sbin/place_daemon_log.sh
+00 * * * * /usr/local/sbin/place_error_log.sh
+</code></pre>
+<p>This crontab make a copy of resources log each hour</p>
+
+</code></pre>
+
+
 
 
