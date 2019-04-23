@@ -26,6 +26,7 @@ cd /var/www/logs
 </code></pre></p>
 
 <h2>create log resources</h2>
+<h3>Copy the log</h3>
 <p>because risk issues I recommend work with copys of logs than you can copy in a cron job. If you want read logs from /var/logs you must be sure that Apache user can read your desired logs and you can jump this step</p>
 
 <pre><code>sudo curl -o /usr/local/sbin/place_resource_log.pl https://raw.githubusercontent.com/arnaiz/zebra/master/place_resource_log.sh</code></pre>
@@ -49,6 +50,13 @@ crontab -e
 
 </code></pre>
 
+<h3>generate resource</h3>
+<p>Make a directory by resource in you logs.mysite htdocs. If you copy the log this directory must be the same refered in $DST variable.</p>
 
+<p>The directory name must follow the pattern get_resources</p>
+<pre><code>
+mkdir /var/www/logs/get_daemons
 
+</code></pre>
 
+Inside that directorys must be a script called call_zebra.pl adapted with  
