@@ -56,7 +56,15 @@ crontab -e
 <p>The directory name must follow the pattern get_resources</p>
 <pre><code>
 mkdir /var/www/logs/get_daemons
-
+curl -o /var/www/get_daemons/call_zebra.pl https://raw.githubusercontent.com/arnaiz/zebra/master/call_zebra.pl
+chown -R www-data.www-data /var/www/logs/get_daemons 
 </code></pre>
 
-Inside that directorys must be a script called call_zebra.pl adapted with  
+<p>Edit $title and $log_file on each call_zebra.pl file</p>
+
+<h2>Getting logs</h2>
+<p>In your browser type a url like this:</p>
+
+<code>https://logs.mysite.com/get_daemon</code>
+
+<p>If its the first time apache request your htpassword, next your log file will be reported</p>
